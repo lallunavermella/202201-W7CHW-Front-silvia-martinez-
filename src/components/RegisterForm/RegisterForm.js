@@ -49,7 +49,7 @@ const RegisterForm = () => {
 
   const initalFields = {
     name: "",
-    userName: "",
+    username: "",
     password: "",
     image: "",
   };
@@ -57,9 +57,16 @@ const RegisterForm = () => {
   const [formData, setFormData] = useState(initalFields);
   const navigate = useNavigate();
 
-  const onSubmit = (event) => {
+  const onSubmit = async (event) => {
     event.preventDefault();
-    dispatch(registerUserThunk(formData));
+
+    const newUser = {
+      name: formData.name,
+      username: formData.username,
+      password: formData.password,
+    };
+
+    await dispatch(registerUserThunk(newUser));
     resetForm();
     navigate("/");
   };
@@ -77,8 +84,8 @@ const RegisterForm = () => {
 
   return (
     <>
-      <StyledForm>
-        <StyleLineForm onSubmit={onSubmit}>
+      <StyledForm onSubmit={onSubmit}>
+        <StyleLineForm>
           <FormBlock className="form-block">
             <label htmlFor="name">Name:</label>
             <StyledInput
@@ -91,14 +98,14 @@ const RegisterForm = () => {
             />
           </FormBlock>
           <FormBlock className="form-block">
-            <label htmlFor="userName">Username:</label>
+            <label htmlFor="username">Username:</label>
             <StyledInput
               autoComplete="off"
               type="text"
-              id="userName"
+              id="username"
               placeholder="Your Username"
               onChange={changeData}
-              value={formData.userName}
+              value={formData.username}
             />
           </FormBlock>
           <FormBlock className="form-block">
@@ -125,9 +132,7 @@ const RegisterForm = () => {
           </FormBlock>
         </StyleLineForm>
         <StyleButtons>
-          <button type="submit" actionOnClick={onSubmit}>
-            Create
-          </button>
+          <button type="submit">Create</button>
         </StyleButtons>
       </StyledForm>
     </>
