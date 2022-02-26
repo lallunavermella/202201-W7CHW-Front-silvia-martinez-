@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const NavBarStyled = styled.ul`
@@ -16,11 +17,15 @@ const NavBarStyled = styled.ul`
 `;
 
 const NavBar = () => {
+  const navigate = useNavigate();
+  const goRegister = () => {
+    navigate("/register");
+  };
   return (
     <>
       <NavBarStyled>
         <li>
-          <button onClick={() => {}}>Register</button>
+          <button onClick={goRegister}>Register</button>
         </li>
         <li>
           <button onClick={() => {}}>Login</button>
