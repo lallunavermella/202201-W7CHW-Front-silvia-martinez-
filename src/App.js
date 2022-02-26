@@ -9,7 +9,7 @@ function App() {
       <h1>Social Network</h1>
       <NavBar />
       <Routes>
-        <Route path="/" element={<RegisterForm />} />
+        <Route path="/register" element={<RegisterForm />} />
       </Routes>
     </div>
   );
