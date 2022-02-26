@@ -1,4 +1,8 @@
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { registerUserThunk } from "../../redux/thunks/thunks";
 
 const StyledForm = styled.form`
   background-color: #f1e3d3;
@@ -41,10 +45,40 @@ const StyledInput = styled.input`
 `;
 
 const RegisterForm = () => {
+  const dispatch = useDispatch();
+
+  const initalFields = {
+    name: "",
+    userName: "",
+    password: "",
+    image: "",
+  };
+
+  const [formData, setFormData] = useState(initalFields);
+  const navigate = useNavigate();
+
+  const onSubmit = (event) => {
+    event.preventDefault();
+    dispatch(registerUserThunk(formData));
+    resetForm();
+    navigate("/");
+  };
+
+  const resetForm = () => {
+    setFormData(initalFields);
+  };
+
+  const changeData = (event) => {
+    setFormData({
+      ...formData,
+      [event.target.id]: event.target.value,
+    });
+  };
+
   return (
     <>
       <StyledForm>
-        <StyleLineForm onSubmit={() => {}}>
+        <StyleLineForm onSubmit={onSubmit}>
           <FormBlock className="form-block">
             <label htmlFor="display_name">Name:</label>
             <StyledInput
@@ -52,8 +86,8 @@ const RegisterForm = () => {
               type="text"
               id="display_name"
               placeholder="Your Name"
-              onChange={""}
-              value={""}
+              onChange={changeData}
+              value={formData.name}
             />
           </FormBlock>
           <FormBlock className="form-block">
@@ -63,8 +97,8 @@ const RegisterForm = () => {
               type="text"
               id="display_username"
               placeholder="Your Username"
-              onChange={""}
-              value={""}
+              onChange={changeData}
+              value={formData.userName}
             />
           </FormBlock>
           <FormBlock className="form-block">
@@ -74,8 +108,8 @@ const RegisterForm = () => {
               type="password"
               id="password"
               placeholder="Password"
-              onChange={""}
-              value={""}
+              onChange={changeData}
+              value={formData.password}
             />
           </FormBlock>
           <FormBlock className="form-block">
@@ -85,13 +119,13 @@ const RegisterForm = () => {
               type="imageInput"
               id="profile_image_url"
               placeholder="Your image"
-              onChange={""}
-              value={""}
+              onChange={changeData}
+              value={formData.image}
             />
           </FormBlock>
         </StyleLineForm>
         <StyleButtons>
-          <button type="submit" text={"Create User"} actionOnClick={() => {}} />
+          <button type="submit" text={"Create User"} actionOnClick={onSubmit} />
         </StyleButtons>
       </StyledForm>
     </>
