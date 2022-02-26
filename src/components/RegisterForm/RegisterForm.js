@@ -4,6 +4,7 @@ const StyledForm = styled.form`
   background-color: #f1e3d3;
   width: 100%;
   padding-bottom: 15px;
+  position: relative;
 `;
 
 const StyleLineForm = styled.div`
