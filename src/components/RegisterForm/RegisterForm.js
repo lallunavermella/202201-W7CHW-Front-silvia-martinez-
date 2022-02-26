@@ -80,22 +80,22 @@ const RegisterForm = () => {
       <StyledForm>
         <StyleLineForm onSubmit={onSubmit}>
           <FormBlock className="form-block">
-            <label htmlFor="display_name">Name:</label>
+            <label htmlFor="name">Name:</label>
             <StyledInput
               autoComplete="off"
               type="text"
-              id="display_name"
+              id="name"
               placeholder="Your Name"
               onChange={changeData}
               value={formData.name}
             />
           </FormBlock>
           <FormBlock className="form-block">
-            <label htmlFor="display_username">Username:</label>
+            <label htmlFor="userName">Username:</label>
             <StyledInput
               autoComplete="off"
               type="text"
-              id="display_username"
+              id="userName"
               placeholder="Your Username"
               onChange={changeData}
               value={formData.userName}
@@ -113,11 +113,11 @@ const RegisterForm = () => {
             />
           </FormBlock>
           <FormBlock className="form-block">
-            <label htmlFor="profile_image_url">Image:</label>
+            <label htmlFor="image">Image:</label>
             <StyledInput
               autoComplete="off"
               type="imageInput"
-              id="profile_image_url"
+              id="image"
               placeholder="Your image"
               onChange={changeData}
               value={formData.image}
@@ -125,7 +125,9 @@ const RegisterForm = () => {
           </FormBlock>
         </StyleLineForm>
         <StyleButtons>
-          <button type="submit" text={"Create User"} actionOnClick={onSubmit} />
+          <button type="submit" actionOnClick={onSubmit}>
+            Create
+          </button>
         </StyleButtons>
       </StyledForm>
     </>
