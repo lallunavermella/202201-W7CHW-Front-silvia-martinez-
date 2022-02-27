@@ -1,4 +1,8 @@
-import { loginUserAction, userRegisterAction } from "../actions/actionCreators";
+import {
+  listUsersAction,
+  loginUserAction,
+  userRegisterAction,
+} from "../actions/actionCreators";
 import jwtDecode from "jwt-decode";
 
 export const registerUserThunk = (user) => async (dispatch) => {
@@ -25,11 +29,29 @@ export const loginUserThunk = (user) => async (dispatch) => {
 
   if (response.ok) {
     const tokenResponse = await response.json();
-
     const { id, userName } = await jwtDecode(tokenResponse.token);
-
-    localStorage.setItem("UserToken", tokenResponse.token);
-
+    localStorage.setItem(
+      "UserToken",
+      JSON.stringify({
+        id,
+        userName,
+        token: tokenResponse.token,
+      })
+    );
     dispatch(loginUserAction({ id, userName, token: tokenResponse.token }));
   }
+};
+
+export const listUserThunks = async (dispatch, getState) => {
+  const token = getState().user.token;
+
+  const response = await fetch(`${process.env.REACT_APP_API_URL}list`, {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  const users = await response.json();
+
+  dispatch(listUsersAction(users));
 };
