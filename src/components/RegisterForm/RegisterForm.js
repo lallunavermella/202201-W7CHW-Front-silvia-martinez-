@@ -62,7 +62,7 @@ const RegisterForm = () => {
 
     const newUser = {
       name: formData.name,
-      username: formData.username,
+      userName: formData.username,
       password: formData.password,
     };
 

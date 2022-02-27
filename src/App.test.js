@@ -1,9 +1,9 @@
-import { render } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
+import renderWithProviders from "./setupTests";
 
 test("renders learn react link", () => {
-  render(
+  renderWithProviders(
     <BrowserRouter>
       <App />
     </BrowserRouter>
