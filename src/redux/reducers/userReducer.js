@@ -1,6 +1,8 @@
 import actionTypes from "../actions/actionTypes";
 
-const userReducer = (currentUser = {}, actions = {}) => {
+const initUser = JSON.parse(localStorage.getItem("UserToken")) || {};
+
+const userReducer = (currentUser = initUser, actions = {}) => {
   let newUser;
   switch (actions.type) {
     case actionTypes.registerUSer:
