@@ -1,8 +1,8 @@
 import "./App.css";
 import NavBar from "./components/NavBar/NavBar";
-import RegisterForm from "./components/RegisterForm/RegisterForm";
 import { Route, Routes } from "react-router-dom";
 import MainPage from "./pages/MainPage";
+import Register from "./pages/Register";
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/" element={<MainPage />} />
-        <Route path="/register" element={<RegisterForm />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
     </div>
   );

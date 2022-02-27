@@ -9,6 +9,7 @@ const StyledForm = styled.form`
   width: 100%;
   padding-bottom: 15px;
   position: relative;
+  top: 120px;
 `;
 
 const StyleLineForm = styled.div`
@@ -132,7 +133,7 @@ const RegisterForm = () => {
           </FormBlock>
         </StyleLineForm>
         <StyleButtons>
-          <button type="submit">Create</button>
+          <button type="submit">Register</button>
         </StyleButtons>
       </StyledForm>
     </>
