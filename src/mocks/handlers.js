@@ -11,4 +11,12 @@ export const handlers = [
       })
     )
   ),
+  rest.post(`${process.env.REACT_APP_API_URL}login`, (req, res, ctx) =>
+    res(
+      ctx.status(201),
+      ctx.json({
+        token: "token",
+      })
+    )
+  ),
 ];
