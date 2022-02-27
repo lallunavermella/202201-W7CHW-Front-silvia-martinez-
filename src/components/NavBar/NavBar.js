@@ -19,6 +19,10 @@ const NavBar = () => {
   const goRegister = () => {
     navigate("/register");
   };
+
+  const goLogin = () => {
+    navigate("/login");
+  };
   return (
     <>
       <NavBarStyled>
@@ -26,7 +30,7 @@ const NavBar = () => {
           <button onClick={goRegister}>Register</button>
         </li>
         <li>
-          <button onClick={() => {}}>Login</button>
+          <button onClick={goLogin}>Login</button>
         </li>
       </NavBarStyled>
     </>
