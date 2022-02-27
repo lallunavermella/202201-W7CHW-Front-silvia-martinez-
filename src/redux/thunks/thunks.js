@@ -9,8 +9,5 @@ export const registerUserThunk = (user) => async (dispatch) => {
     body: JSON.stringify(user),
   });
   const newUser = await response.json();
-
-  if (response.ok) {
-    dispatch(userRegisterAction(newUser));
-  }
+  dispatch(userRegisterAction(newUser));
 };
