@@ -5,6 +5,10 @@ const Title = styled.h1`
   font-size: 26px;
   width: 100%;
   top: 100px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
   position: relative;
 `;
 
