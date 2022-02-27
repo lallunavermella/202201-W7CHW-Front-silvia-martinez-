@@ -1,15 +1,15 @@
 import "./App.css";
 import NavBar from "./components/NavBar/NavBar";
 import RegisterForm from "./components/RegisterForm/RegisterForm";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
+import MainPage from "./pages/MainPage";
 
 function App() {
   return (
     <div className="App">
-      <h1>Social Network</h1>
       <NavBar />
       <Routes>
-        <Route path="/" element={<Navigate to="/register" />} />
+        <Route path="/" element={<MainPage />} />
         <Route path="/register" element={<RegisterForm />} />
       </Routes>
     </div>
