@@ -47,7 +47,7 @@ const User = ({ user: { name, userName, image, friend, enemie } }) => {
       <UserCard>
         <Nombre>{name}</Nombre>
         <Username>{userName}</Username>
-        <img src={image} alt="imagen robot" />
+        <img src={image} alt={`imagen ${name} `} />
         <Connect>
           Amigos:{" "}
           {friend.map((f) => {
