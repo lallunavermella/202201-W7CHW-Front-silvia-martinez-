@@ -1,7 +1,7 @@
 import "./App.css";
 import NavBar from "./components/NavBar/NavBar";
 import RegisterForm from "./components/RegisterForm/RegisterForm";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 
 function App() {
   return (
@@ -9,6 +9,7 @@ function App() {
       <h1>Social Network</h1>
       <NavBar />
       <Routes>
+        <Route path="/" element={<Navigate to="/register" />} />
         <Route path="/register" element={<RegisterForm />} />
       </Routes>
     </div>
