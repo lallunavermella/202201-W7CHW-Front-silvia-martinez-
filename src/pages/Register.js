@@ -4,7 +4,6 @@ import RegisterForm from "../components/RegisterForm/RegisterForm";
 const Register = () => {
   return (
     <>
-      <NavBar />
       <RegisterForm />
     </>
   );
