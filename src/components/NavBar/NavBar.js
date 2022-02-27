@@ -12,8 +12,6 @@ const NavBarStyled = styled.ul`
   justify-content: space-around;
   list-style: none;
   flex-wrap: wrap;
-
-  margin: 20px;
 `;
 
 const NavBar = () => {
