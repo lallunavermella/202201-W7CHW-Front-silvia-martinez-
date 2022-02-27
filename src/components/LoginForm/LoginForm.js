@@ -48,10 +48,8 @@ const LoginForm = () => {
   const dispatch = useDispatch();
 
   const initalFields = {
-    name: "",
     username: "",
     password: "",
-    image: "",
   };
 
   const [formData, setFormData] = useState(initalFields);
@@ -61,7 +59,6 @@ const LoginForm = () => {
     event.preventDefault();
 
     const newUser = {
-      name: formData.name,
       userName: formData.username,
       password: formData.password,
     };

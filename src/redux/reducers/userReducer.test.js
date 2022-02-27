@@ -21,6 +21,26 @@ describe("Given a userREducer function", () => {
       expect(reducer).toEqual(user);
     });
   });
+  describe("When it receives currentUser and userLogin action with a valid user", () => {
+    test("Then ut should return the user", () => {
+      const currentUser = {};
+
+      const user = {
+        name: "pepe",
+        username: "pepito",
+        password: "123",
+      };
+
+      const action = {
+        type: actionTypes.registerUSer,
+        user,
+      };
+      const reducer = userReducer(currentUser, action);
+
+      expect(reducer).toEqual(user);
+    });
+  });
+
   describe("When it receives a currentUser and a not existing action", () => {
     test("Then it should return a currentUser", () => {
       const currentUser = {};
