@@ -65,7 +65,7 @@ const LoginForm = () => {
 
     await dispatch(loginUserThunk(newUser));
     resetForm();
-    navigate("/");
+    navigate("/list");
   };
 
   const resetForm = () => {
