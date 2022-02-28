@@ -68,7 +68,7 @@ const RegisterForm = () => {
 
     await dispatch(registerUserThunk(data));
     resetForm();
-    navigate("/");
+    navigate("/login");
   };
 
   const resetForm = () => {
