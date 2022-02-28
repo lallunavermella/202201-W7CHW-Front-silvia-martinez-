@@ -60,7 +60,6 @@ const RegisterForm = () => {
   const onSubmit = async (event) => {
     event.preventDefault();
 
-    console.log(formData);
     const data = new FormData();
     data.append("name", formData.name);
     data.append("userName", formData.username);
