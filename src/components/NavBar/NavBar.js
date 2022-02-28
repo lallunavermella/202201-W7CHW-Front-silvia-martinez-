@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const NavBarStyled = styled.ul`
@@ -10,14 +10,23 @@ const NavBarStyled = styled.ul`
   background-color: whitesmoke;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-evenly;
   list-style: none;
   flex-wrap: wrap;
   z-index: 99;
+  p:hover {
+    color: #060;
+    cursor: pointer;
+    font-size: large;
+  }
 `;
 
 const NavBar = () => {
+  const params = useLocation();
+  const location = params.pathname;
+
   const navigate = useNavigate();
+
   const goRegister = () => {
     navigate("/register");
   };
@@ -34,15 +43,22 @@ const NavBar = () => {
   return (
     <>
       <NavBarStyled>
-        <li>
-          <button onClick={goRegister}>Register</button>
-        </li>
-        <li>
-          <button onClick={goLogin}>Login</button>
-        </li>
-        <li>
-          <button onClick={logOut}>LogOut</button>
-        </li>
+        {location !== "/list" && (
+          <li>
+            <p onClick={goRegister}>Register</p>
+          </li>
+        )}
+        {location !== "/list" && (
+          <li>
+            <p onClick={goLogin}>Login</p>
+          </li>
+        )}
+
+        {location === "/list" && (
+          <li>
+            <p onClick={logOut}>LogOut</p>
+          </li>
+        )}
       </NavBarStyled>
     </>
   );
