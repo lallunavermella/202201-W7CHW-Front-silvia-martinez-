@@ -8,10 +8,8 @@ import jwtDecode from "jwt-decode";
 export const registerUserThunk = (user) => async (dispatch) => {
   const response = await fetch(`${process.env.REACT_APP_API_URL}register`, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(user),
+
+    body: user,
   });
 
   const newUser = await response.json();
