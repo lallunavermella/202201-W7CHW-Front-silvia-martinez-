@@ -51,11 +51,17 @@ const User = ({ user: { name, userName, image, friend, enemie } }) => {
         <Connect>
           Amigos:{" "}
           {friend.map((f) => {
-            return <div>{f.name}</div>;
+            return `${f.name}, `;
           })}
         </Connect>
 
-        <Connect>Enemigos: {enemie}</Connect>
+        <Connect>
+          {" "}
+          Enemigos:{" "}
+          {enemie.map((e) => {
+            return `${e.name}`;
+          })}
+        </Connect>
       </UserCard>
     </>
   );
