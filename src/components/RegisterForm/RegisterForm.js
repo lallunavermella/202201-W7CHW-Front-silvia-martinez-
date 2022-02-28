@@ -52,7 +52,6 @@ const RegisterForm = () => {
     name: "",
     username: "",
     password: "",
-    image: "",
   };
 
   const [formData, setFormData] = useState(initalFields);
@@ -61,13 +60,14 @@ const RegisterForm = () => {
   const onSubmit = async (event) => {
     event.preventDefault();
 
-    const newUser = {
-      name: formData.name,
-      userName: formData.username,
-      password: formData.password,
-    };
+    console.log(formData);
+    const data = new FormData();
+    data.append("name", formData.name);
+    data.append("userName", formData.username);
+    data.append("password", formData.password);
+    data.append("image", formData.image);
 
-    await dispatch(registerUserThunk(newUser));
+    await dispatch(registerUserThunk(data));
     resetForm();
     navigate("/");
   };
@@ -79,7 +79,10 @@ const RegisterForm = () => {
   const changeData = (event) => {
     setFormData({
       ...formData,
-      [event.target.id]: event.target.value,
+      [event.target.id]:
+        event.target.type === "file"
+          ? event.target.files[0]
+          : event.target.value,
     });
   };
 
@@ -124,11 +127,10 @@ const RegisterForm = () => {
             <label htmlFor="image">Image:</label>
             <StyledInput
               autoComplete="off"
-              type="imageInput"
+              type="file"
               id="image"
               placeholder="Your image"
               onChange={changeData}
-              value={formData.image}
             />
           </FormBlock>
         </StyleLineForm>
