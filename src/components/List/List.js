@@ -26,7 +26,7 @@ const List = () => {
   return (
     <ListStyled>
       {users.map((user) => (
-        <User key={user.userName} user={user} />
+        <User key={`${user.userName}`} user={user} />
       ))}
     </ListStyled>
   );
